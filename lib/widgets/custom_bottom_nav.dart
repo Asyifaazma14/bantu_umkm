@@ -15,30 +15,30 @@ class CustomBottomNav extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        margin: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
+        margin: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
         decoration: BoxDecoration(
           color: const Color(0xFFFFFFFF),
           borderRadius: BorderRadius.circular(30),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.08),
+              color: Colors.black.withOpacity(0.05),
               blurRadius: 20,
               offset: const Offset(0, 10),
             ),
           ],
         ),
-        // Material digunakan agar efek InkWell (klik) bisa muncul
         child: Material(
           color: Colors.transparent,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildNavItem(Icons.home_filled, 'Home', 0),
-                _buildNavItem(Icons.explore_outlined, 'Explore', 1),
-                _buildNavItem(Icons.favorite, 'Favorit', 2),
-                _buildNavItem(Icons.person, 'Profil', 3),
+                _buildNavItem(Icons.home_outlined, 'Home', 0),
+                _buildNavItem(Icons.grid_view_rounded, 'Produk', 1),
+                _buildNavItem(Icons.storefront_outlined, 'UMKM', 2),
+                _buildNavItem(Icons.favorite_border_rounded, 'Favorit', 3),
+                _buildNavItem(Icons.person_outline_rounded, 'Profil', 4),
               ],
             ),
           ),
@@ -49,40 +49,40 @@ class CustomBottomNav extends StatelessWidget {
 
   Widget _buildNavItem(IconData icon, String label, int index) {
     final isSelected = currentIndex == index;
+    // Dikembalikan ke warna ungu tema utama
+    const activeColor = Color(0xFF8B5CF6);
+
     return InkWell(
       onTap: () => onTap(index),
-      borderRadius: BorderRadius.circular(20), // Bentuk efek klik membulat
+      borderRadius: BorderRadius.circular(30),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeInOut,
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         decoration: isSelected
             ? BoxDecoration(
-                color: const Color(0xFF8B5CF6).withOpacity(0.1),
-                borderRadius: BorderRadius.circular(20),
+                color: activeColor,
+                borderRadius: BorderRadius.circular(30), // Bentuk Pill / Kapsul
               )
             : BoxDecoration(
                 color: Colors.transparent,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(30),
               ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(
               icon,
-              color: isSelected
-                  ? const Color(0xFF8B5CF6)
-                  : const Color(0xFF9CA3AF),
+              color: isSelected ? Colors.white : const Color(0xFF6B7280),
               size: 24,
             ),
-            const SizedBox(height: 4),
+            const SizedBox(height: 2),
             Text(
               label,
               style: GoogleFonts.poppins(
                 fontSize: 10,
-                fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-                color: isSelected
-                    ? const Color(0xFF8B5CF6)
-                    : const Color(0xFF9CA3AF),
+                fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
+                color: isSelected ? Colors.white : const Color(0xFF6B7280),
               ),
             ),
           ],
