@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'screens/dashboard_screen.dart';
+import 'screens/main_screen.dart'; // Wajib import MainScreen
 
 void main() {
   runApp(const BantuUMKMApp());
@@ -12,30 +11,18 @@ class BantuUMKMApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark,
-    ));
     return MaterialApp(
       title: 'BantuUMKM',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFFF7F8FC),
-        primaryColor: const Color(0xFF6366F1),
-        textTheme: GoogleFonts.poppinsTextTheme(
-          Theme.of(context).textTheme,
-        ),
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF6366F1),
-          brightness: Brightness.light,
-          primary: const Color(0xFF6366F1),
-          secondary: const Color(0xFF8B5CF6),
-          surface: Colors.white,
-          background: const Color(0xFFF7F8FC),
-        ),
+        scaffoldBackgroundColor: const Color(0xFFF8F9FA),
+        primaryColor: const Color(0xFF8B5CF6),
+        textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF8B5CF6)),
         useMaterial3: true,
       ),
-      home: const DashboardScreen(),
+      home:
+          const MainScreen(), // PENTING: Harus MainScreen agar fungsi klik jalan
     );
   }
 }
