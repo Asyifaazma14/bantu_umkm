@@ -18,8 +18,8 @@ class ProductCard extends StatelessWidget {
   final String reviewsCount;
   final String description;
   final List<String> images;
-  
-  // New fields matching the store info
+
+  // Store info
   final String storeName;
   final String storeLocation;
   final List<String> specifications;
@@ -31,7 +31,7 @@ class ProductCard extends StatelessWidget {
     required this.price,
     required this.location,
     required this.rating,
-    this.width = 160,
+    this.width = 170,
     this.originalPrice,
     this.discount,
     this.category = 'Umum',
@@ -79,13 +79,13 @@ class ProductCard extends StatelessWidget {
       child: Container(
         width: width,
         decoration: BoxDecoration(
-          color: const Color(0xFFFFFFFF),
+          color: Colors.white,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.04),
-              blurRadius: 10,
-              offset: const Offset(0, 4),
+              color: Colors.black.withOpacity(0.07),
+              blurRadius: 16,
+              offset: const Offset(0, 6),
             ),
           ],
         ),
@@ -101,125 +101,212 @@ class ProductCard extends StatelessWidget {
                     topRight: Radius.circular(20),
                   ),
                   child: SizedBox(
-                    height: 140,
+                    height: 145,
                     width: double.infinity,
                     child: images.isNotEmpty
                         ? CachedNetworkImage(
                             imageUrl: images.first,
                             fit: BoxFit.cover,
                             placeholder: (context, url) => Container(
-                              color: const Color(0xFFCBBD93).withOpacity(0.3),
+                              color: const Color(0xFFF3F4F6),
                               child: const Center(
                                 child: CircularProgressIndicator(
                                   strokeWidth: 2,
-                                  valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF574A24)),
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                      Color(0xFF6366F1)),
                                 ),
                               ),
                             ),
                             errorWidget: (context, url, error) => Container(
-                              color: const Color(0xFFCBBD93),
+                              color: const Color(0xFFF3F4F6),
                               child: const Center(
                                 child: Icon(
                                   Icons.image_outlined,
-                                  color: Color(0xFFFFFFFF),
+                                  color: Color(0xFF9CA3AF),
                                   size: 40,
                                 ),
                               ),
                             ),
                           )
                         : Container(
-                            color: const Color(0xFFCBBD93),
+                            color: const Color(0xFFF3F4F6),
                             child: const Center(
                               child: Icon(
                                 Icons.image_outlined,
-                                color: Color(0xFFFFFFFF),
+                                color: Color(0xFF9CA3AF),
                                 size: 40,
                               ),
                             ),
                           ),
                   ),
                 ),
+                // Discount Badge
+                if (discount != null)
+                  Positioned(
+                    top: 10,
+                    left: 10,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFEF4444),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        '-$discount',
+                        style: GoogleFonts.poppins(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                // Favorite Button
                 Positioned(
                   top: 10,
                   right: 10,
                   child: Container(
                     padding: const EdgeInsets.all(6),
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFFFFFFF),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
                       shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 6,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
                     ),
                     child: const Icon(
-                      Icons.favorite_border,
-                      color: Colors.redAccent,
-                      size: 16,
+                      Icons.favorite_border_rounded,
+                      color: Color(0xFF6366F1),
+                      size: 15,
                     ),
                   ),
                 ),
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.fromLTRB(12, 12, 12, 14),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.star_rounded,
-                        color: Colors.orangeAccent,
-                        size: 16,
+                  // Category chip
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8, vertical: 3),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF6366F1).withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Text(
+                      category,
+                      style: GoogleFonts.poppins(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w600,
+                        color: const Color(0xFF6366F1),
                       ),
-                      const SizedBox(width: 4),
-                      Text(
-                        rating,
-                        style: GoogleFonts.poppins(
-                          fontSize: 12,
-                          color: const Color(0xFF6B7280),
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 7),
                   Text(
                     title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.poppins(
-                      fontSize: 14,
+                      fontSize: 13,
                       fontWeight: FontWeight.w600,
-                      color: const Color(0xFF1F2937),
+                      color: const Color(0xFF1A1D2E),
+                      height: 1.3,
                     ),
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 6),
+                  // Rating Row
                   Row(
                     children: [
                       const Icon(
-                        Icons.location_on,
-                        color: Color(0xFF80775C),
+                        Icons.star_rounded,
+                        color: Color(0xFFF59E0B),
                         size: 14,
                       ),
-                      const SizedBox(width: 4),
+                      const SizedBox(width: 3),
+                      Text(
+                        rating,
+                        style: GoogleFonts.poppins(
+                          fontSize: 11,
+                          color: const Color(0xFF4B5563),
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        '  ·  ',
+                        style: GoogleFonts.poppins(
+                          fontSize: 11,
+                          color: const Color(0xFF9CA3AF),
+                        ),
+                      ),
+                      const Icon(
+                        Icons.location_on_rounded,
+                        color: Color(0xFF9CA3AF),
+                        size: 12,
+                      ),
+                      const SizedBox(width: 2),
                       Expanded(
                         child: Text(
                           location,
                           overflow: TextOverflow.ellipsis,
                           style: GoogleFonts.poppins(
                             fontSize: 11,
-                            color: const Color(0xFF6B7280),
+                            color: const Color(0xFF9CA3AF),
                           ),
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 12),
-                  Text(
-                    price,
-                    style: GoogleFonts.poppins(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: const Color(0xFF574A24),
-                    ),
+                  const SizedBox(height: 10),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            if (originalPrice != null)
+                              Text(
+                                originalPrice!,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 10,
+                                  color: const Color(0xFF9CA3AF),
+                                  decoration: TextDecoration.lineThrough,
+                                ),
+                              ),
+                            Text(
+                              price,
+                              style: GoogleFonts.poppins(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: const Color(0xFF6366F1),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: 32,
+                        height: 32,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF6366F1),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Icon(
+                          Icons.add_rounded,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -230,4 +317,3 @@ class ProductCard extends StatelessWidget {
     );
   }
 }
-

@@ -13,29 +13,29 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F6F1),
+      backgroundColor: const Color(0xFFF7F8FC),
       extendBody: true,
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        backgroundColor: const Color(0xFF574A24),
-        elevation: 4,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        child: const Icon(Icons.chat_bubble_outline, color: Color(0xFFFFFFFF)),
+        backgroundColor: const Color(0xFF6366F1),
+        elevation: 0,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+        child: const Icon(Icons.headset_mic_rounded, color: Colors.white, size: 24),
       ),
       bottomNavigationBar: const CustomBottomNav(),
       body: SafeArea(
         bottom: false,
         child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(24, 24, 24, 120),
+          padding: const EdgeInsets.fromLTRB(20, 20, 20, 120),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const HomeHeader(),
               const SizedBox(height: 24),
               const PromoBanner(),
-              const SizedBox(height: 32),
+              const SizedBox(height: 28),
               CategoryList(),
-              const SizedBox(height: 32),
+              const SizedBox(height: 28),
 
               // SECTION PRODUK TERBARU
               Row(
@@ -44,17 +44,17 @@ class DashboardScreen extends StatelessWidget {
                   Text(
                     'Produk Terbaru',
                     style: GoogleFonts.poppins(
-                      fontSize: 18,
+                      fontSize: 17,
                       fontWeight: FontWeight.w600,
-                      color: const Color(0xFF1F2937),
+                      color: const Color(0xFF1A1D2E),
                     ),
                   ),
                   Text(
                     'Lihat Semua',
                     style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: const Color(0xFF80775C),
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: const Color(0xFF6366F1),
                     ),
                   ),
                 ],
@@ -94,7 +94,7 @@ class DashboardScreen extends StatelessWidget {
                         'https://images.unsplash.com/photo-1591561954557-26941169b49e?q=80&w=600&auto=format&fit=crop'
                       ],
                     ),
-                    const SizedBox(width: 16),
+                    const SizedBox(width: 14),
                     ProductCard(
                       title: 'Keripik Tempe Renyah',
                       price: 'Rp 15.000',
@@ -124,7 +124,7 @@ class DashboardScreen extends StatelessWidget {
                         'https://images.unsplash.com/photo-1566478431189-d8e78df7905c?q=80&w=600&auto=format&fit=crop'
                       ],
                     ),
-                    const SizedBox(width: 16),
+                    const SizedBox(width: 14),
                     ProductCard(
                       title: 'Batik Tulis Eksklusif "Mega Mendung" Cirebon',
                       price: 'Rp 1.250.000',
@@ -159,16 +159,29 @@ class DashboardScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 32),
+              const SizedBox(height: 28),
 
               // SECTION REKOMENDASI
-              Text(
-                'Rekomendasi Untukmu',
-                style: GoogleFonts.poppins(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  color: const Color(0xFF1F2937),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Rekomendasi Untukmu',
+                    style: GoogleFonts.poppins(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w600,
+                      color: const Color(0xFF1A1D2E),
+                    ),
+                  ),
+                  Text(
+                    'Lihat Semua',
+                    style: GoogleFonts.poppins(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: const Color(0xFF6366F1),
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 16),
               GridView.builder(
@@ -176,14 +189,16 @@ class DashboardScreen extends StatelessWidget {
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                  childAspectRatio: 0.65,
+                  crossAxisSpacing: 14,
+                  mainAxisSpacing: 14,
+                  childAspectRatio: 0.60,
                 ),
                 itemCount: 4,
                 itemBuilder: (context, index) {
                   final titles = ['Kopi Gayo Arabica', 'Sandal Kulit Garut', 'Madu Hutan Sumbawa', 'Dompet Kulit Eksotik'];
                   final prices = ['Rp 85.000', 'Rp 175.000', 'Rp 120.000', 'Rp 210.000'];
+                  final originalPrices = ['Rp 100.000', 'Rp 200.000', 'Rp 145.000', 'Rp 250.000'];
+                  final discounts = ['15%', '12%', '17%', '16%'];
                   final locations = ['Aceh Tengah', 'Garut, Jabar', 'Sumbawa, NTB', 'Sidoarjo, Jatim'];
                   final ratings = ['4.9', '4.8', '4.7', '4.9'];
                   final stockList = ['15 Pcs', '22 Pcs', '30 Pcs', '5 Pcs'];
@@ -217,6 +232,8 @@ class DashboardScreen extends StatelessWidget {
                     width: double.infinity,
                     title: titles[index % 4],
                     price: prices[index % 4],
+                    originalPrice: originalPrices[index % 4],
+                    discount: discounts[index % 4],
                     location: locations[index % 4],
                     rating: ratings[index % 4],
                     stock: stockList[index % 4],
@@ -228,7 +245,7 @@ class DashboardScreen extends StatelessWidget {
                 },
               ),
 
-              const SizedBox(height: 32),
+              const SizedBox(height: 28),
               const CtaStoreCard(),
             ],
           ),

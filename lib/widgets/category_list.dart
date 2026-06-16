@@ -5,11 +5,11 @@ class CategoryList extends StatelessWidget {
   CategoryList({Key? key}) : super(key: key);
 
   final List<Map<String, dynamic>> categories = [
-    {'icon': Icons.restaurant_menu, 'name': 'Makanan'},
-    {'icon': Icons.brush, 'name': 'Kerajinan'},
-    {'icon': Icons.checkroom, 'name': 'Pakaian'},
-    {'icon': Icons.handyman, 'name': 'Jasa'},
-    {'icon': Icons.more_horiz, 'name': 'Lainnya'},
+    {'icon': Icons.restaurant_menu_rounded, 'name': 'Makanan', 'color': Color(0xFFF97316)},
+    {'icon': Icons.brush_rounded, 'name': 'Kerajinan', 'color': Color(0xFF6366F1)},
+    {'icon': Icons.checkroom_rounded, 'name': 'Pakaian', 'color': Color(0xFFEC4899)},
+    {'icon': Icons.handyman_rounded, 'name': 'Jasa', 'color': Color(0xFF10B981)},
+    {'icon': Icons.more_horiz_rounded, 'name': 'Lainnya', 'color': Color(0xFF8B5CF6)},
   ];
 
   @override
@@ -23,17 +23,17 @@ class CategoryList extends StatelessWidget {
             Text(
               'Kategori Pilihan',
               style: GoogleFonts.poppins(
-                fontSize: 18,
+                fontSize: 17,
                 fontWeight: FontWeight.w600,
-                color: const Color(0xFF1F2937),
+                color: const Color(0xFF1A1D2E),
               ),
             ),
             Text(
               'Lihat Semua',
               style: GoogleFonts.poppins(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: const Color(0xFF80775C),
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                color: const Color(0xFF6366F1),
               ),
             ),
           ],
@@ -44,20 +44,21 @@ class CategoryList extends StatelessWidget {
           clipBehavior: Clip.none,
           child: Row(
             children: categories.map((cat) {
+              final color = cat['color'] as Color;
               return Padding(
                 padding: const EdgeInsets.only(right: 16),
                 child: Column(
                   children: [
                     Container(
-                      width: 60,
-                      height: 60,
+                      width: 62,
+                      height: 62,
                       decoration: BoxDecoration(
-                        color: const Color(0xFFFAE8B4).withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(16),
+                        color: color.withOpacity(0.12),
+                        borderRadius: BorderRadius.circular(18),
                       ),
                       child: Icon(
                         cat['icon'],
-                        color: const Color(0xFF574A24),
+                        color: color,
                         size: 28,
                       ),
                     ),
@@ -66,7 +67,7 @@ class CategoryList extends StatelessWidget {
                       cat['name'],
                       style: GoogleFonts.poppins(
                         fontSize: 12,
-                        color: const Color(0xFF6B7280),
+                        color: const Color(0xFF4B5563),
                         fontWeight: FontWeight.w500,
                       ),
                     ),

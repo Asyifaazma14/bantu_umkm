@@ -17,18 +17,31 @@ class HomeHeader extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const Icon(
-                      Icons.storefront_rounded,
-                      color: Color(0xFF574A24),
-                      size: 28,
+                    Container(
+                      width: 36,
+                      height: 36,
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [Color(0xFF6366F1), Color(0xFF8B5CF6)],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Icon(
+                        Icons.storefront_rounded,
+                        color: Colors.white,
+                        size: 20,
+                      ),
                     ),
-                    const SizedBox(width: 8),
+                    const SizedBox(width: 10),
                     Text(
                       'BantuUMKM',
                       style: GoogleFonts.poppins(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
-                        color: const Color(0xFF574A24),
+                        color: const Color(0xFF1A1D2E),
+                        letterSpacing: -0.5,
                       ),
                     ),
                   ],
@@ -37,7 +50,7 @@ class HomeHeader extends StatelessWidget {
                 Text(
                   'Halo, Budi Santoso 👋',
                   style: GoogleFonts.poppins(
-                    fontSize: 14,
+                    fontSize: 13,
                     color: const Color(0xFF6B7280),
                   ),
                 ),
@@ -47,33 +60,66 @@ class HomeHeader extends StatelessWidget {
               children: [
                 Stack(
                   children: [
-                    IconButton(
-                      icon: const Icon(
-                        Icons.notifications_none_rounded,
-                        color: Color(0xFF1F2937),
+                    Container(
+                      width: 44,
+                      height: 44,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.06),
+                            blurRadius: 8,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
                       ),
-                      onPressed: () {},
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.notifications_none_rounded,
+                          color: Color(0xFF1A1D2E),
+                          size: 22,
+                        ),
+                        onPressed: () {},
+                      ),
                     ),
                     Positioned(
-                      right: 12,
-                      top: 12,
+                      right: 10,
+                      top: 10,
                       child: Container(
                         width: 8,
                         height: 8,
                         decoration: const BoxDecoration(
-                          color: Colors.redAccent,
+                          color: Color(0xFFEF4444),
                           shape: BoxShape.circle,
                         ),
                       ),
                     ),
                   ],
                 ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.shopping_cart_outlined,
-                    color: Color(0xFF1F2937),
+                const SizedBox(width: 10),
+                Container(
+                  width: 44,
+                  height: 44,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.06),
+                        blurRadius: 8,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
                   ),
-                  onPressed: () {},
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.shopping_bag_outlined,
+                      color: Color(0xFF1A1D2E),
+                      size: 22,
+                    ),
+                    onPressed: () {},
+                  ),
                 ),
               ],
             ),
@@ -83,25 +129,44 @@ class HomeHeader extends StatelessWidget {
         // SEARCH BAR
         Container(
           decoration: BoxDecoration(
-            color: const Color(0xFFFFFFFF),
-            borderRadius: BorderRadius.circular(30),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.03),
-                blurRadius: 10,
+                color: Colors.black.withOpacity(0.06),
+                blurRadius: 12,
                 offset: const Offset(0, 4),
               ),
             ],
-            border: Border.all(color: const Color(0xFFE5E7EB), width: 1),
           ),
           child: TextField(
+            style: GoogleFonts.poppins(
+              color: const Color(0xFF1A1D2E),
+              fontSize: 14,
+            ),
             decoration: InputDecoration(
               hintText: 'Cari produk UMKM lokal...',
               hintStyle: GoogleFonts.poppins(
-                color: const Color(0xFF6B7280),
+                color: const Color(0xFF9CA3AF),
                 fontSize: 14,
               ),
-              prefixIcon: const Icon(Icons.search, color: Color(0xFF80775C)),
+              prefixIcon: const Icon(
+                Icons.search_rounded,
+                color: Color(0xFF9CA3AF),
+                size: 22,
+              ),
+              suffixIcon: Container(
+                margin: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF6366F1),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Icon(
+                  Icons.tune_rounded,
+                  color: Colors.white,
+                  size: 18,
+                ),
+              ),
               border: InputBorder.none,
               contentPadding: const EdgeInsets.symmetric(
                 horizontal: 20,
