@@ -47,7 +47,6 @@ class ProductDetailScreen extends StatefulWidget {
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
   final PageController _pageController = PageController();
   bool _isFavorite = false;
-  int _qty = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -151,50 +150,23 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Category + Stock Row
+                        // Hanya tampilkan chip kategori
                         Row(
                           children: [
                             Container(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 12, vertical: 5),
                               decoration: BoxDecoration(
-                                color: const Color(0xFF6366F1).withOpacity(0.1),
+                                color: const Color(0xFFB45309).withOpacity(0.1),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Text(
                                 widget.category,
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.plusJakartaSans(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
-                                  color: const Color(0xFF6366F1),
+                                  color: const Color(0xFFB45309),
                                 ),
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 12, vertical: 5),
-                              decoration: BoxDecoration(
-                                color: const Color(0xFF10B981).withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Row(
-                                children: [
-                                  const Icon(
-                                    Icons.check_circle_rounded,
-                                    color: Color(0xFF10B981),
-                                    size: 12,
-                                  ),
-                                  const SizedBox(width: 4),
-                                  Text(
-                                    'Stok: ${widget.stock}',
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600,
-                                      color: const Color(0xFF10B981),
-                                    ),
-                                  ),
-                                ],
                               ),
                             ),
                           ],
@@ -204,7 +176,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         // Product Title
                         Text(
                           widget.title,
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.plusJakartaSans(
                             fontSize: 21,
                             fontWeight: FontWeight.bold,
                             color: const Color(0xFF1A1D2E),
@@ -224,7 +196,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             const SizedBox(width: 8),
                             Text(
                               widget.rating,
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.plusJakartaSans(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xFF1A1D2E),
@@ -233,7 +205,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             const SizedBox(width: 4),
                             Text(
                               widget.reviewsCount,
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.plusJakartaSans(
                                 fontSize: 13,
                                 color: const Color(0xFF9CA3AF),
                               ),
@@ -247,7 +219,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             const SizedBox(width: 3),
                             Text(
                               widget.location,
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.plusJakartaSans(
                                 fontSize: 12,
                                 color: const Color(0xFF6B7280),
                               ),
@@ -260,15 +232,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         Container(
                           padding: const EdgeInsets.all(18),
                           decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                              colors: [Color(0xFF6366F1), Color(0xFF8B5CF6)],
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                            ),
+                            color: const Color(0xFFB45309),
                             borderRadius: BorderRadius.circular(18),
                             boxShadow: [
                               BoxShadow(
-                                color: const Color(0xFF6366F1).withOpacity(0.3),
+                                color: const Color(0xFFB45309).withOpacity(0.3),
                                 blurRadius: 16,
                                 offset: const Offset(0, 8),
                               ),
@@ -280,19 +248,26 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
+                                    Text(
+                                      'Harga Referensi',
+                                      style: GoogleFonts.plusJakartaSans(
+                                        fontSize: 11,
+                                        color: Colors.white.withOpacity(0.75),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 4),
                                     if (widget.originalPrice != null)
                                       Text(
                                         widget.originalPrice!,
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.plusJakartaSans(
                                           fontSize: 12,
                                           color: Colors.white.withOpacity(0.65),
-                                          decoration:
-                                              TextDecoration.lineThrough,
+                                          decoration: TextDecoration.lineThrough,
                                         ),
                                       ),
                                     Text(
                                       widget.price,
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.plusJakartaSans(
                                         fontSize: 26,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
@@ -302,78 +277,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   ],
                                 ),
                               ),
-                              if (widget.discount != null)
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 6),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white.withOpacity(0.2),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Text(
-                                    'Hemat ${widget.discount}',
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w700,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
                             ],
                           ),
                         ),
                         const SizedBox(height: 20),
-
-                        // Quantity Selector
-                        Row(
-                          children: [
-                            Text(
-                              'Jumlah:',
-                              style: GoogleFonts.poppins(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: const Color(0xFF1A1D2E),
-                              ),
-                            ),
-                            const Spacer(),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(14),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.06),
-                                    blurRadius: 8,
-                                    offset: const Offset(0, 2),
-                                  ),
-                                ],
-                              ),
-                              child: Row(
-                                children: [
-                                  _qtyButton(Icons.remove_rounded, () {
-                                    if (_qty > 1) setState(() => _qty--);
-                                  }),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 16),
-                                    child: Text(
-                                      '$_qty',
-                                      style: GoogleFonts.poppins(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: const Color(0xFF1A1D2E),
-                                      ),
-                                    ),
-                                  ),
-                                  _qtyButton(Icons.add_rounded, () {
-                                    setState(() => _qty++);
-                                  }),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 24),
 
                         // ─── STORE INFO CARD ─────────────────────────────
                         Container(
@@ -398,7 +305,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   gradient: const LinearGradient(
                                     colors: [
                                       Color(0xFF6366F1),
-                                      Color(0xFF8B5CF6)
+                                      Color(0xFFB45309)
                                     ],
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
@@ -420,7 +327,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   children: [
                                     Text(
                                       widget.storeName,
-                                      style: GoogleFonts.poppins(
+                                      style: GoogleFonts.plusJakartaSans(
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold,
                                         color: const Color(0xFF1A1D2E),
@@ -438,7 +345,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                         Expanded(
                                           child: Text(
                                             widget.storeLocation,
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.plusJakartaSans(
                                               fontSize: 12,
                                               color: const Color(0xFF6B7280),
                                             ),
@@ -459,7 +366,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 ),
                                 child: Text(
                                   'Kunjungi',
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.plusJakartaSans(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w600,
                                     color: const Color(0xFF6366F1),
@@ -474,7 +381,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         // ─── DESCRIPTION ─────────────────────────────────
                         Text(
                           'Deskripsi Produk',
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.plusJakartaSans(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF1A1D2E),
@@ -483,18 +390,89 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         const SizedBox(height: 10),
                         Text(
                           widget.description,
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.plusJakartaSans(
                             fontSize: 14,
                             color: const Color(0xFF6B7280),
                             height: 1.7,
                           ),
+                        ),
+                        const SizedBox(height: 28),
+
+                        // ─── PLATFORM LINKS ───────────────────────────────
+                        Text(
+                          'Temukan di Platform Lain',
+                          style: GoogleFonts.plusJakartaSans(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFF1A1D2E),
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Klik untuk mengunjungi toko atau akun resmi UMKM ini.',
+                          style: GoogleFonts.plusJakartaSans(
+                            fontSize: 12,
+                            color: const Color(0xFF9CA3AF),
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        // Online Shop Row
+                        Row(
+                          children: [
+                            _buildPlatformButton(
+                              context,
+                              label: 'Shopee',
+                              bgColor: const Color(0xFFEE4D2D),
+                              icon: Icons.shopping_bag_rounded,
+                            ),
+                            const SizedBox(width: 10),
+                            _buildPlatformButton(
+                              context,
+                              label: 'Tokopedia',
+                              bgColor: const Color(0xFF03AC0E),
+                              icon: Icons.store_rounded,
+                            ),
+                            const SizedBox(width: 10),
+                            _buildPlatformButton(
+                              context,
+                              label: 'Lazada',
+                              bgColor: const Color(0xFF0F146D),
+                              icon: Icons.local_mall_rounded,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        // Sosmed Row
+                        Row(
+                          children: [
+                            _buildPlatformButton(
+                              context,
+                              label: 'TikTok',
+                              bgColor: const Color(0xFF010101),
+                              icon: Icons.music_note_rounded,
+                            ),
+                            const SizedBox(width: 10),
+                            _buildPlatformButton(
+                              context,
+                              label: 'Instagram',
+                              bgColor: const Color(0xFFE1306C),
+                              icon: Icons.camera_alt_rounded,
+                            ),
+                            const SizedBox(width: 10),
+                            _buildPlatformButton(
+                              context,
+                              label: 'Facebook',
+                              bgColor: const Color(0xFF1877F2),
+                              icon: Icons.facebook_rounded,
+                            ),
+                          ],
                         ),
 
                         if (widget.specifications.isNotEmpty) ...[
                           const SizedBox(height: 18),
                           Text(
                             'Spesifikasi',
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.plusJakartaSans(
                               fontSize: 15,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFF1A1D2E),
@@ -535,7 +513,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       Expanded(
                                         child: Text(
                                           spec.replaceFirst('- ', ''),
-                                          style: GoogleFonts.poppins(
+                                          style: GoogleFonts.plusJakartaSans(
                                             fontSize: 13,
                                             color: const Color(0xFF4B5563),
                                             height: 1.5,
@@ -558,7 +536,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             children: [
                               Text(
                                 'Produk Serupa',
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.plusJakartaSans(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFF1A1D2E),
@@ -566,7 +544,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                               ),
                               Text(
                                 'Lihat Semua',
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.plusJakartaSans(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFF6366F1),
@@ -736,25 +714,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               ),
               child: Row(
                 children: [
-                  // Cart Icon Button
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      width: 52,
-                      height: 52,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFF3F4F6),
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                      child: const Icon(
-                        Icons.shopping_cart_outlined,
-                        color: Color(0xFF6366F1),
-                        size: 24,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  // WhatsApp / Buy Button
+                  // Tombol WhatsApp
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
@@ -762,7 +722,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           SnackBar(
                             content: Text(
                               'Menghubungi penjual via WhatsApp...',
-                              style: GoogleFonts.poppins(fontSize: 13),
+                              style: GoogleFonts.plusJakartaSans(fontSize: 13),
                             ),
                             backgroundColor: const Color(0xFF25D366),
                             behavior: SnackBarBehavior.floating,
@@ -775,15 +735,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       child: Container(
                         height: 52,
                         decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [Color(0xFF6366F1), Color(0xFF8B5CF6)],
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                          ),
+                          color: const Color(0xFF25D366),
                           borderRadius: BorderRadius.circular(14),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFF6366F1).withOpacity(0.35),
+                              color: const Color(0xFF25D366).withOpacity(0.35),
                               blurRadius: 12,
                               offset: const Offset(0, 6),
                             ),
@@ -793,14 +749,68 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Icon(
-                              Icons.chat_bubble_rounded,
+                              Icons.chat_rounded,
                               color: Colors.white,
                               size: 18,
                             ),
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 8),
                             Text(
-                              'Hubungi via WhatsApp',
-                              style: GoogleFonts.poppins(
+                              'WhatsApp',
+                              style: GoogleFonts.plusJakartaSans(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  // Tombol Toko Online
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Membuka toko online penjual...',
+                              style: GoogleFonts.plusJakartaSans(fontSize: 13),
+                            ),
+                            backgroundColor: const Color(0xFFB45309),
+                            behavior: SnackBarBehavior.floating,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        height: 52,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFB45309),
+                          borderRadius: BorderRadius.circular(14),
+                          boxShadow: [
+                            BoxShadow(
+                              color: const Color(0xFFB45309).withOpacity(0.35),
+                              blurRadius: 12,
+                              offset: const Offset(0, 6),
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.storefront_rounded,
+                              color: Colors.white,
+                              size: 18,
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              'Toko Online',
+                              style: GoogleFonts.plusJakartaSans(
                                 color: Colors.white,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
@@ -820,18 +830,62 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     );
   }
 
-  Widget _qtyButton(IconData icon, VoidCallback onTap) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 38,
-        height: 38,
-        decoration: BoxDecoration(
-          color: const Color(0xFFF3F4F6),
-          borderRadius: BorderRadius.circular(10),
+  Widget _buildPlatformButton(
+    BuildContext context, {
+    required String label,
+    required Color bgColor,
+    required IconData icon,
+  }) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                'Membuka $label...',
+                style: GoogleFonts.plusJakartaSans(fontSize: 13),
+              ),
+              backgroundColor: bgColor,
+              behavior: SnackBarBehavior.floating,
+              duration: const Duration(seconds: 2),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+          );
+        },
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          decoration: BoxDecoration(
+            color: bgColor,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: bgColor.withOpacity(0.3),
+                blurRadius: 8,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon, color: Colors.white, size: 22),
+              const SizedBox(height: 4),
+              Text(
+                label,
+                style: GoogleFonts.plusJakartaSans(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w600,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
         ),
-        child: Icon(icon, size: 18, color: const Color(0xFF6366F1)),
       ),
     );
   }
+
 }

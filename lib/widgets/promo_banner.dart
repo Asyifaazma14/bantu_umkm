@@ -12,7 +12,7 @@ class PromoBanner extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
         gradient: const LinearGradient(
-          colors: [Color(0xFF6366F1), Color(0xFF8B5CF6), Color(0xFFA78BFA)],
+          colors: [Color(0xFF6366F1), Color(0xFFB45309), Color(0xFFA78BFA)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -62,7 +62,7 @@ class PromoBanner extends StatelessWidget {
                 ),
                 child: Text(
                   '🔥 Promo Terbatas',
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.plusJakartaSans(
                     color: Colors.white,
                     fontSize: 11,
                     fontWeight: FontWeight.w600,
@@ -72,7 +72,7 @@ class PromoBanner extends StatelessWidget {
               const SizedBox(height: 14),
               Text(
                 'Dukung UMKM\nLokal Kita',
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.plusJakartaSans(
                   color: Colors.white,
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
@@ -83,7 +83,7 @@ class PromoBanner extends StatelessWidget {
               const SizedBox(height: 8),
               Text(
                 'Diskon hingga 50% setiap akhir pekan.',
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.plusJakartaSans(
                   color: Colors.white.withOpacity(0.8),
                   fontSize: 13,
                 ),
@@ -108,8 +108,8 @@ class PromoBanner extends StatelessWidget {
                     ],
                   ),
                   child: Text(
-                    'Belanja Sekarang →',
-                    style: GoogleFonts.poppins(
+                    'Eksplor Sekarang →',
+                    style: GoogleFonts.plusJakartaSans(
                       color: const Color(0xFF6366F1),
                       fontSize: 13,
                       fontWeight: FontWeight.bold,

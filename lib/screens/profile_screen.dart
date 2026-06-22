@@ -15,16 +15,16 @@ class ProfileScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Icon(Icons.menu, color: Color(0xFF8B5CF6)),
+                const Icon(Icons.menu, color: Color(0xFFB45309)),
                 Text(
                   'BantuUMKM',
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.plusJakartaSans(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: const Color(0xFF8B5CF6),
+                    color: const Color(0xFFB45309),
                   ),
                 ),
-                const Icon(Icons.notifications_none, color: Color(0xFF8B5CF6)),
+                const Icon(Icons.notifications_none, color: Color(0xFFB45309)),
               ],
             ),
             const SizedBox(height: 32),
@@ -53,7 +53,7 @@ class ProfileScreen extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.all(6),
                     decoration: const BoxDecoration(
-                      color: Color(0xFF8B5CF6),
+                      color: Color(0xFFB45309),
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(Icons.camera_alt,
@@ -65,14 +65,14 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               'Budi Santoso',
-              style: GoogleFonts.poppins(
+              style: GoogleFonts.plusJakartaSans(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: const Color(0xFF1F2937)),
             ),
             Text(
               'budi.santoso@example.com',
-              style: GoogleFonts.poppins(
+              style: GoogleFonts.plusJakartaSans(
                   fontSize: 12, color: const Color(0xFF6B7280)),
             ),
             const SizedBox(height: 32),
@@ -87,8 +87,7 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 24),
             _buildSectionTitle('Activity'),
             _buildMenuCard([
-              _buildMenuItem(Icons.shopping_bag_outlined, 'My Orders',
-                  badge: '3'),
+              _buildMenuItem(Icons.storefront_outlined, 'Daftarkan UMKM'),
               _buildDivider(),
               _buildMenuItem(Icons.rate_review_outlined, 'My Reviews'),
               _buildDivider(),
@@ -113,7 +112,7 @@ class ProfileScreen extends StatelessWidget {
                 icon: const Icon(Icons.logout, color: Colors.redAccent),
                 label: Text(
                   'Logout',
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.plusJakartaSans(
                       color: Colors.redAccent, fontWeight: FontWeight.w600),
                 ),
                 style: OutlinedButton.styleFrom(
@@ -137,10 +136,10 @@ class ProfileScreen extends StatelessWidget {
         alignment: Alignment.centerLeft,
         child: Text(
           title,
-          style: GoogleFonts.poppins(
+          style: GoogleFonts.plusJakartaSans(
               fontSize: 12,
               fontWeight: FontWeight.bold,
-              color: const Color(0xFF8B5CF6)),
+              color: const Color(0xFFB45309)),
         ),
       ),
     );
@@ -166,7 +165,7 @@ class ProfileScreen extends StatelessWidget {
     return ListTile(
       leading: Icon(icon, color: const Color(0xFF4B5563)),
       title: Text(title,
-          style: GoogleFonts.poppins(
+          style: GoogleFonts.plusJakartaSans(
               fontSize: 14, color: const Color(0xFF1F2937))),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
@@ -180,7 +179,7 @@ class ProfileScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Text(badge,
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.plusJakartaSans(
                       fontSize: 10,
                       color: Colors.red,
                       fontWeight: FontWeight.bold)),

@@ -1,0 +1,1 @@
+ E:\\bantu_umkm-1\\.dart_tool\\flutter_build\\f42ca89a0a146193ba5e5897f34ad4b7\\dart_build_result.json:  C:\\flutter_windows_3.41.2-stable\\flutter\\bin\\cache\\dart-sdk\\version E:\\bantu_umkm-1\\.dart_tool\\package_config.json E:\\bantu_umkm-1\\pubspec.yaml e:\\bantu_umkm-1\\.dart_tool\\package_config.json

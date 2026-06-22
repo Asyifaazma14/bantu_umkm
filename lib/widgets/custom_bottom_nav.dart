@@ -35,10 +35,8 @@ class CustomBottomNav extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _buildNavItem(Icons.home_outlined, 'Home', 0),
-                _buildNavItem(Icons.grid_view_rounded, 'Produk', 1),
-                _buildNavItem(Icons.storefront_outlined, 'UMKM', 2),
-                _buildNavItem(Icons.favorite_border_rounded, 'Favorit', 3),
-                _buildNavItem(Icons.person_outline_rounded, 'Profil', 4),
+                _buildNavItem(Icons.favorite_border_rounded, 'Favorit', 1),
+                _buildNavItem(Icons.person_outline_rounded, 'Profil', 2),
               ],
             ),
           ),
@@ -50,7 +48,7 @@ class CustomBottomNav extends StatelessWidget {
   Widget _buildNavItem(IconData icon, String label, int index) {
     final isSelected = currentIndex == index;
     // Dikembalikan ke warna ungu tema utama
-    const activeColor = Color(0xFF8B5CF6);
+    const activeColor = Color(0xFFB45309);
 
     return InkWell(
       onTap: () => onTap(index),
@@ -79,7 +77,7 @@ class CustomBottomNav extends StatelessWidget {
             const SizedBox(height: 2),
             Text(
               label,
-              style: GoogleFonts.poppins(
+              style: GoogleFonts.plusJakartaSans(
                 fontSize: 10,
                 fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
                 color: isSelected ? Colors.white : const Color(0xFF6B7280),

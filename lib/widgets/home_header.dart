@@ -22,7 +22,7 @@ class HomeHeader extends StatelessWidget {
                       height: 36,
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
-                          colors: [Color(0xFF6366F1), Color(0xFF8B5CF6)],
+                          colors: [Color(0xFF6366F1), Color(0xFFB45309)],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
@@ -37,7 +37,7 @@ class HomeHeader extends StatelessWidget {
                     const SizedBox(width: 10),
                     Text(
                       'BantuUMKM',
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.plusJakartaSans(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                         color: const Color(0xFF1A1D2E),
@@ -49,7 +49,7 @@ class HomeHeader extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   'Halo, Budi Santoso 👋',
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.plusJakartaSans(
                     fontSize: 13,
                     color: const Color(0xFF6B7280),
                   ),
@@ -140,13 +140,13 @@ class HomeHeader extends StatelessWidget {
             ],
           ),
           child: TextField(
-            style: GoogleFonts.poppins(
+            style: GoogleFonts.plusJakartaSans(
               color: const Color(0xFF1A1D2E),
               fontSize: 14,
             ),
             decoration: InputDecoration(
               hintText: 'Cari produk UMKM lokal...',
-              hintStyle: GoogleFonts.poppins(
+              hintStyle: GoogleFonts.plusJakartaSans(
                 color: const Color(0xFF9CA3AF),
                 fontSize: 14,
               ),

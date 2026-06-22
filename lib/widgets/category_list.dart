@@ -9,7 +9,7 @@ class CategoryList extends StatelessWidget {
     {'icon': Icons.brush_rounded, 'name': 'Kerajinan', 'color': Color(0xFF6366F1)},
     {'icon': Icons.checkroom_rounded, 'name': 'Pakaian', 'color': Color(0xFFEC4899)},
     {'icon': Icons.handyman_rounded, 'name': 'Jasa', 'color': Color(0xFF10B981)},
-    {'icon': Icons.more_horiz_rounded, 'name': 'Lainnya', 'color': Color(0xFF8B5CF6)},
+    {'icon': Icons.more_horiz_rounded, 'name': 'Lainnya', 'color': Color(0xFFB45309)},
   ];
 
   @override
@@ -22,7 +22,7 @@ class CategoryList extends StatelessWidget {
           children: [
             Text(
               'Kategori Pilihan',
-              style: GoogleFonts.poppins(
+              style: GoogleFonts.plusJakartaSans(
                 fontSize: 17,
                 fontWeight: FontWeight.w600,
                 color: const Color(0xFF1A1D2E),
@@ -30,7 +30,7 @@ class CategoryList extends StatelessWidget {
             ),
             Text(
               'Lihat Semua',
-              style: GoogleFonts.poppins(
+              style: GoogleFonts.plusJakartaSans(
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
                 color: const Color(0xFF6366F1),
@@ -65,7 +65,7 @@ class CategoryList extends StatelessWidget {
                     const SizedBox(height: 8),
                     Text(
                       cat['name'],
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.plusJakartaSans(
                         fontSize: 12,
                         color: const Color(0xFF4B5563),
                         fontWeight: FontWeight.w500,

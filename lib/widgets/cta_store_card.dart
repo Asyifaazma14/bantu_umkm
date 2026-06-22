@@ -54,7 +54,7 @@ class CtaStoreCard extends StatelessWidget {
                       ),
                       child: Text(
                         '✨ Untuk Penjual',
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.plusJakartaSans(
                           fontSize: 10,
                           fontWeight: FontWeight.w600,
                           color: const Color(0xFFA5B4FC),
@@ -64,7 +64,7 @@ class CtaStoreCard extends StatelessWidget {
                     const SizedBox(height: 10),
                     Text(
                       'Punya Usaha\nSendiri?',
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.plusJakartaSans(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -74,7 +74,7 @@ class CtaStoreCard extends StatelessWidget {
                     const SizedBox(height: 8),
                     Text(
                       'Jangkau lebih banyak\npembeli di seluruh Indonesia.',
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.plusJakartaSans(
                         fontSize: 12,
                         color: const Color(0xFF9CA3AF),
                         height: 1.5,
@@ -91,7 +91,7 @@ class CtaStoreCard extends StatelessWidget {
                       horizontal: 20, vertical: 14),
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
-                      colors: [Color(0xFF6366F1), Color(0xFF8B5CF6)],
+                      colors: [Color(0xFF6366F1), Color(0xFFB45309)],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
@@ -107,7 +107,7 @@ class CtaStoreCard extends StatelessWidget {
                   child: Text(
                     'Buka\nToko',
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.plusJakartaSans(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 13,
