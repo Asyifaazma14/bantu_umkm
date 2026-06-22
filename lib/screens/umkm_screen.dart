@@ -26,6 +26,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Yogyakarta',
       'rating': 4.8,
       'category': 'Kuliner',
+      'description': 'Gudeg khas Yogyakarta yang dikemas praktis dalam kaleng. Tahan lama dan tanpa bahan pengawet.',
     },
     {
       'title': 'Bakpia Pathok Premium',
@@ -33,6 +34,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Yogyakarta',
       'rating': 4.9,
       'category': 'Kuliner',
+      'description': 'Bakpia lezat dengan berbagai pilihan rasa: kacang hijau, cokelat, keju. Cocok untuk oleh-oleh keluarga.',
     },
     {
       'title': 'Keripik Tempe Sagu',
@@ -40,6 +42,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Gunungkidul',
       'rating': 4.7,
       'category': 'Kuliner',
+      'description': 'Camilan renyah nan gurih yang dibuat dari tempe berkualitas tinggi dilapisi sagu. Cocok untuk teman bersantai.',
     },
     {
       'title': 'Wedang Uwuh Instan',
@@ -47,6 +50,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Bantul',
       'rating': 4.8,
       'category': 'Kuliner',
+      'description': 'Minuman tradisional penghangat tubuh yang kaya rempah. Tinggal seduh dan nikmati khasiatnya.',
     },
     {
       'title': 'Yangko Aneka Rasa',
@@ -54,6 +58,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Kotagede',
       'rating': 4.6,
       'category': 'Kuliner',
+      'description': 'Kue tradisional dengan tekstur kenyal manis mirip mochi, hadir dalam berbagai rasa buah yang menyegarkan.',
     },
     {
       'title': 'Sate Klatak Frozen',
@@ -61,6 +66,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Bantul',
       'rating': 4.9,
       'category': 'Kuliner',
+      'description': 'Sate kambing muda khas Bantul yang dikemas beku. Praktis tinggal dipanaskan untuk menikmati rasa autentik.',
     },
 
     // --- FASHION ---
@@ -70,6 +76,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Yogyakarta',
       'rating': 5.0,
       'category': 'Fashion',
+      'description': 'Kain batik tulis asli yang dibuat secara manual dengan motif klasik parang rusak, sangat elegan.',
     },
     {
       'title': 'Tas Rajut Tangan',
@@ -77,6 +84,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Sleman',
       'rating': 4.7,
       'category': 'Fashion',
+      'description': 'Tas buatan tangan berbahan rajut nilon yang kuat. Desain modern, warna menarik, dan tahan lama.',
     },
     {
       'title': 'Sepatu Kulit Pria',
@@ -84,6 +92,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Bantul',
       'rating': 4.9,
       'category': 'Fashion',
+      'description': 'Sepatu kulit sapi asli bergaya formal buatan pengrajin lokal Bantul. Sangat awet dan nyaman dipakai.',
     },
     {
       'title': 'Kemeja Lurik Modern',
@@ -91,6 +100,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Klaten',
       'rating': 4.8,
       'category': 'Fashion',
+      'description': 'Kemeja pria berbahan kain tenun lurik klasik yang dipadukan dengan gaya cutting modern.',
     },
     {
       'title': 'Dompet Kulit Pari',
@@ -98,6 +108,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Bantul',
       'rating': 4.9,
       'category': 'Fashion',
+      'description': 'Dompet premium yang terbuat dari kulit ikan pari asli. Memiliki tekstur khas seperti mutiara dan anti gores.',
     },
     {
       'title': 'Blangkon Mataraman',
@@ -105,6 +116,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Yogyakarta',
       'rating': 4.8,
       'category': 'Fashion',
+      'description': 'Tutup kepala tradisional Jawa gaya Mataraman dengan jahitan rapi, dapat dilipat dan dicuci.',
     },
 
     // --- SENI ---
@@ -114,6 +126,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Yogyakarta',
       'rating': 4.9,
       'category': 'Seni',
+      'description': 'Karya seni abstrak orisinil menggunakan cat akrilik pada kanvas ukuran besar, cocok untuk dekorasi ruang tamu.',
     },
     {
       'title': 'Patung Kayu Loro Blonyo',
@@ -121,6 +134,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Bantul',
       'rating': 4.8,
       'category': 'Seni',
+      'description': 'Sepasang patung kayu klasik Jawa lambang kemakmuran dan kesuburan, diukir dan dicat dengan apik.',
     },
     {
       'title': 'Wayang Kulit Prabu Rama',
@@ -128,6 +142,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Bantul',
       'rating': 5.0,
       'category': 'Seni',
+      'description': 'Karya wayang kulit asli yang dipahat (tatah sungging) dengan detail luar biasa dari kulit kerbau pilihan.',
     },
     {
       'title': 'Topeng Batik Kayu',
@@ -135,6 +150,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Bantul',
       'rating': 4.7,
       'category': 'Seni',
+      'description': 'Topeng kayu dengan sentuhan motif batik. Bisa digunakan sebagai hiasan dinding bernuansa etnik.',
     },
     {
       'title': 'Kaligrafi Kulit Kambing',
@@ -142,6 +158,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Sleman',
       'rating': 4.8,
       'category': 'Seni',
+      'description': 'Hiasan kaligrafi Arab menawan yang ditulis di atas media kulit kambing asli berbingkai kayu.',
     },
     {
       'title': 'Miniatur Candi Prambanan',
@@ -149,6 +166,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Sleman',
       'rating': 4.9,
       'category': 'Seni',
+      'description': 'Replika candi legendaris berbentuk miniatur dari cetakan fiberglass dan batu vulkanik yang mendetail.',
     },
 
     // --- KERAJINAN ---
@@ -158,6 +176,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Bantul',
       'rating': 4.8,
       'category': 'Kerajinan',
+      'description': 'Guci cantik terbuat dari tanah liat berkualitas karya asli desa pengrajin Kasongan.',
     },
     {
       'title': 'Tudung Saji Anyaman',
@@ -165,6 +184,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Sleman',
       'rating': 4.6,
       'category': 'Kerajinan',
+      'description': 'Penutup makanan tradisional berbentuk bulat dari anyaman bambu yang natural, ramah lingkungan, dan estetik.',
     },
     {
       'title': 'Bros Perak Kotagede',
@@ -172,6 +192,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Kotagede',
       'rating': 4.9,
       'category': 'Kerajinan',
+      'description': 'Aksesoris bros indah berbahan dasar perak filigree asli pengrajin Kotagede yang terkenal ke mancanegara.',
     },
     {
       'title': 'Lampu Gantung Bambu',
@@ -179,6 +200,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Bantul',
       'rating': 4.7,
       'category': 'Kerajinan',
+      'description': 'Kap lampu gantung berbahan dasar bambu yang disusun artistik, memberikan siluet cahaya yang indah.',
     },
     {
       'title': 'Kotak Tisu Pelepah Pisang',
@@ -186,6 +208,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Sleman',
       'rating': 4.5,
       'category': 'Kerajinan',
+      'description': 'Produk kerajinan ramah lingkungan yang memanfaatkan pelepah pisang kering untuk menjadi tempat tisu fungsional.',
     },
     {
       'title': 'Keranjang Anyaman Rotan',
@@ -193,6 +216,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Gunungkidul',
       'rating': 4.8,
       'category': 'Kerajinan',
+      'description': 'Keranjang rotan yang kokoh dan berkapasitas cukup besar. Sangat pas untuk menyimpan barang atau hiasan rumah.',
     },
 
     // --- JASA ---
@@ -202,6 +226,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Yogyakarta',
       'rating': 4.9,
       'category': 'Jasa',
+      'description': 'Layanan pemotretan profesional untuk produk UMKM. Meningkatkan daya tarik katalog dengan foto berkualitas tinggi.',
     },
     {
       'title': 'Desain Logo UMKM',
@@ -209,6 +234,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Yogyakarta',
       'rating': 5.0,
       'category': 'Jasa',
+      'description': 'Pembuatan identitas visual atau logo unik khusus UMKM. Proses cepat dengan revisi tanpa batas.',
     },
     {
       'title': 'Pembuatan Website Toko',
@@ -216,6 +242,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Sleman',
       'rating': 4.9,
       'category': 'Jasa',
+      'description': 'Jasa pembuatan toko online berbasis website profesional untuk memperluas jangkauan pasar penjualan digital Anda.',
     },
     {
       'title': 'Konsultan Pajak UMKM',
@@ -223,6 +250,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Yogyakarta',
       'rating': 4.8,
       'category': 'Jasa',
+      'description': 'Layanan bimbingan pembukuan perpajakan untuk pengusaha kecil menengah yang dibimbing langsung oleh akuntan ahli.',
     },
     {
       'title': 'Admin Sosmed Freelance',
@@ -230,6 +258,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
       'location': 'Bantul',
       'rating': 4.7,
       'category': 'Jasa',
+      'description': 'Pengelolaan konten, postingan harian, hingga balas komentar Instagram dan TikTok untuk bisnis selama 1 bulan penuh.',
     },
   ];
 
@@ -675,6 +704,7 @@ class _UmkmScreenState extends State<UmkmScreen> {
                         location: product['location'],
                         rating: product['rating'].toString(),
                         category: product['category'],
+                        description: product['description'] ?? 'Tidak ada deskripsi',
                       );
                     },
                   ),
