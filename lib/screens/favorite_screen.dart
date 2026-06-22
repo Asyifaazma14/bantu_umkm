@@ -120,7 +120,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              'Daftar produk UMKM yang Anda sukai dan ingin dibeli nanti.',
+              'Produk UMKM lokal yang Anda simpan untuk dilihat nanti.',
               style: GoogleFonts.plusJakartaSans(
                 fontSize: 12,
                 color: const Color(0xFF6B7280),
@@ -201,7 +201,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
 
                   return Stack(
                     children: [
-                      // Card produk aslinya
+                      // Card produk — klik membuka halaman detail
                       ProductCard(
                         title: item['title'],
                         price: item['price'],
@@ -209,14 +209,16 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                         rating: item['rating'],
                         category: item['category'] ?? 'Favorit',
                         width: double.infinity,
+                        showAddButton: false,
                       ),
                       
-                      // Checkbox overlay diletakkan tanpa mengubah bentuk / border card
+                      // Checkbox di pojok kiri atas — hanya untuk seleksi hapus
                       Positioned(
                         top: 8,
                         left: 8,
                         child: GestureDetector(
                           onTap: () => _toggleSelection(index),
+                          behavior: HitTestBehavior.opaque,
                           child: Container(
                             decoration: BoxDecoration(
                               color: Colors.white.withOpacity(0.9),
@@ -230,17 +232,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                 borderRadius: BorderRadius.circular(4),
                               ),
                             ),
-                          ),
-                        ),
-                      ),
-                      
-                      // Transparan tappable area untuk klik (opsional jika card-nya sendiri bukan button)
-                      Positioned.fill(
-                        child: Material(
-                          color: Colors.transparent,
-                          child: InkWell(
-                            borderRadius: BorderRadius.circular(16),
-                            onTap: () => _toggleSelection(index),
                           ),
                         ),
                       ),

@@ -24,6 +24,7 @@ class ProductCard extends StatelessWidget {
   final String storeLocation;
   final List<String> specifications;
   final List<String> similarProducts;
+  final bool showAddButton;
 
   const ProductCard({
     super.key,
@@ -43,6 +44,7 @@ class ProductCard extends StatelessWidget {
     this.storeLocation = 'Indonesia',
     this.specifications = const [],
     this.similarProducts = const [],
+    this.showAddButton = true,
   });
 
   @override
@@ -140,7 +142,7 @@ class ProductCard extends StatelessWidget {
                           ),
                   ),
                 ),
-                // Discount Badge
+                // Discount Badge (hanya untuk promo, bukan untuk beli)
                 if (discount != null)
                   Positioned(
                     top: 10,
@@ -162,30 +164,6 @@ class ProductCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                // Favorite Button
-                Positioned(
-                  top: 10,
-                  right: 10,
-                  child: Container(
-                    padding: const EdgeInsets.all(6),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 6,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    child: const Icon(
-                      Icons.favorite_border_rounded,
-                      color: Color(0xFF6366F1),
-                      size: 15,
-                    ),
-                  ),
-                ),
               ],
             ),
             Padding(
@@ -291,19 +269,6 @@ class ProductCard extends StatelessWidget {
                               ),
                             ),
                           ],
-                        ),
-                      ),
-                      Container(
-                        width: 32,
-                        height: 32,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF6366F1),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: const Icon(
-                          Icons.add_rounded,
-                          color: Colors.white,
-                          size: 20,
                         ),
                       ),
                     ],
