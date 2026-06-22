@@ -87,8 +87,7 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 24),
             _buildSectionTitle('Activity'),
             _buildMenuCard([
-              _buildMenuItem(Icons.shopping_bag_outlined, 'My Orders',
-                  badge: '3'),
+              _buildMenuItem(Icons.storefront_outlined, 'Daftarkan UMKM'),
               _buildDivider(),
               _buildMenuItem(Icons.rate_review_outlined, 'My Reviews'),
               _buildDivider(),
