@@ -67,24 +67,31 @@ class DashboardScreen extends StatelessWidget {
                 child: Row(
                   children: const [
                     ProductCard(
-                      title: 'Tas Kulit Wanita Premium',
+                      title: 'Guci Hias Keramik',
                       price: 'Rp 250.000',
-                      location: 'Ubud, Bali',
+                      location: 'Desa Kasongan, Bantul',
                       rating: '4.9',
                     ),
                     SizedBox(width: 16),
                     ProductCard(
-                      title: 'Kain Tenun Tradisional',
-                      price: 'Rp 450.000',
-                      location: 'Lombok, NTB',
+                      title: 'Vas Bunga Terakota',
+                      price: 'Rp 85.000',
+                      location: 'Desa Kasongan, Bantul',
                       rating: '4.8',
                     ),
                     SizedBox(width: 16),
                     ProductCard(
-                      title: 'Mug Keramik Custom',
-                      price: 'Rp 85.000',
-                      location: 'Bandung, Jabar',
+                      title: 'Patung Loro Blonyo',
+                      price: 'Rp 150.000',
+                      location: 'Desa Kasongan, Bantul',
                       rating: '5.0',
+                    ),
+                    SizedBox(width: 16),
+                    ProductCard(
+                      title: 'Celengan Tanah Liat',
+                      price: 'Rp 35.000',
+                      location: 'Desa Kasongan, Bantul',
+                      rating: '4.7',
                     ),
                   ],
                 ),
@@ -110,12 +117,38 @@ class DashboardScreen extends StatelessWidget {
                 ),
                 itemCount: 4,
                 itemBuilder: (context, index) {
+                  List<Map<String, String>> rekomendasiProduk = [
+                    {
+                      'title': 'Piring Hias Dinding',
+                      'price': 'Rp 75.000',
+                      'location': 'Desa Kasongan, Bantul',
+                      'rating': '4.8',
+                    },
+                    {
+                      'title': 'Lampu Hias Gerabah',
+                      'price': 'Rp 120.000',
+                      'location': 'Desa Kasongan, Bantul',
+                      'rating': '4.9',
+                    },
+                    {
+                      'title': 'Pot Tanaman Ukir',
+                      'price': 'Rp 95.000',
+                      'location': 'Desa Kasongan, Bantul',
+                      'rating': '4.7',
+                    },
+                    {
+                      'title': 'Kendi Air Minum',
+                      'price': 'Rp 45.000',
+                      'location': 'Desa Kasongan, Bantul',
+                      'rating': '4.6',
+                    },
+                  ];
                   return ProductCard(
                     width: double.infinity,
-                    title: 'Produk Pilihan ${index + 1}',
-                    price: 'Rp 100.000',
-                    location: 'Jakarta',
-                    rating: '4.7',
+                    title: rekomendasiProduk[index]['title']!,
+                    price: rekomendasiProduk[index]['price']!,
+                    location: rekomendasiProduk[index]['location']!,
+                    rating: rekomendasiProduk[index]['rating']!,
                   );
                 },
               ),
