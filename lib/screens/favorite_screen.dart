@@ -2,11 +2,91 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/product_card.dart';
 
-class FavoriteScreen extends StatelessWidget {
+class FavoriteScreen extends StatefulWidget {
   const FavoriteScreen({Key? key}) : super(key: key);
 
   @override
+  State<FavoriteScreen> createState() => _FavoriteScreenState();
+}
+
+class _FavoriteScreenState extends State<FavoriteScreen> {
+  // Mock data for favorites
+  List<Map<String, dynamic>> _favoriteItems = [
+    {
+      'title': 'Mug Keramik Tanah Liat',
+      'price': 'Rp 85.000',
+      'location': 'Desa Wisata Kasongan',
+      'rating': '4.8',
+      'category': 'Kerajinan',
+    },
+    {
+      'title': 'Kemeja Batik Tulis',
+      'price': 'Rp 450.000',
+      'location': 'Desa Wisata Kasongan',
+      'rating': '5.0',
+      'category': 'Fashion',
+    },
+    {
+      'title': 'Madu Hutan Organik',
+      'price': 'Rp 120.000',
+      'location': 'Desa Wisata Kasongan',
+      'rating': '4.9',
+      'category': 'Kuliner',
+    },
+    {
+      'title': 'Tas Anyaman Pandan',
+      'price': 'Rp 210.000',
+      'location': 'Desa Wisata Kasongan',
+      'rating': '4.7',
+      'category': 'Kerajinan',
+    },
+  ];
+
+  Set<int> _selectedIndices = {};
+
+  void _deleteSelected() {
+    setState(() {
+      // Sort indices descending to avoid shifting issues when removing
+      final sortedIndices = _selectedIndices.toList()..sort((a, b) => b.compareTo(a));
+      for (int index in sortedIndices) {
+        _favoriteItems.removeAt(index);
+      }
+      _selectedIndices.clear();
+    });
+    
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Produk favorit berhasil dihapus'),
+        backgroundColor: Colors.red,
+        duration: Duration(seconds: 2),
+      ),
+    );
+  }
+
+  void _toggleSelectAll(bool? value) {
+    setState(() {
+      if (value == true) {
+        _selectedIndices = Set.from(List.generate(_favoriteItems.length, (i) => i));
+      } else {
+        _selectedIndices.clear();
+      }
+    });
+  }
+
+  void _toggleSelection(int index) {
+    setState(() {
+      if (_selectedIndices.contains(index)) {
+        _selectedIndices.remove(index);
+      } else {
+        _selectedIndices.add(index);
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    bool isAllSelected = _favoriteItems.isNotEmpty && _selectedIndices.length == _favoriteItems.length;
+
     return SafeArea(
       bottom: false,
       child: SingleChildScrollView(
@@ -17,7 +97,7 @@ class FavoriteScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Icon(Icons.menu, color: Color(0xFFB45309)),
+                const Icon(Icons.favorite, color: Color(0xFFB45309)),
                 Text(
                   'BantuUMKM',
                   style: GoogleFonts.plusJakartaSans(
@@ -47,64 +127,128 @@ class FavoriteScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFB45309),
-                    borderRadius: BorderRadius.circular(8),
+            
+            // Header for Checklist and Delete
+            if (_favoriteItems.isNotEmpty)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Checkbox(
+                        value: isAllSelected,
+                        onChanged: _toggleSelectAll,
+                        activeColor: const Color(0xFFB45309),
+                      ),
+                      Text(
+                        'Pilih Semua',
+                        style: GoogleFonts.plusJakartaSans(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: const Color(0xFF4B5563),
+                        ),
+                      ),
+                    ],
                   ),
-                  child: const Icon(Icons.grid_view_rounded,
-                      color: Colors.white, size: 20),
-                ),
-                const SizedBox(width: 8),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFF3F4F6),
-                    borderRadius: BorderRadius.circular(8),
+                  if (_selectedIndices.isNotEmpty)
+                    ElevatedButton.icon(
+                      onPressed: _deleteSelected,
+                      icon: const Icon(Icons.delete_outline, size: 16),
+                      label: Text('Hapus (${_selectedIndices.length})'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red.shade50,
+                        foregroundColor: Colors.red,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      ),
+                    ),
+                ],
+              ),
+            
+            if (_favoriteItems.isEmpty)
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 40),
+                child: Center(
+                  child: Column(
+                    children: [
+                      Icon(Icons.favorite_border, size: 64, color: Colors.grey.shade300),
+                      const SizedBox(height: 16),
+                      Text(
+                        'Belum ada favorit.',
+                        style: GoogleFonts.plusJakartaSans(color: Colors.grey.shade500),
+                      ),
+                    ],
                   ),
-                  child: const Icon(Icons.view_list_rounded,
-                      color: Color(0xFF6B7280), size: 20),
                 ),
-              ],
-            ),
-            const SizedBox(height: 24),
-            GridView.count(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              crossAxisCount: 2,
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 16,
-              childAspectRatio: 0.65,
-              children: const [
-                ProductCard(
-                    title: 'Mug Keramik Tanah...',
-                    price: 'Rp 85.000',
-                    location: 'UMKM Jaya',
-                    rating: '4.8',
-                    width: double.infinity),
-                ProductCard(
-                    title: 'Kemeja Batik Tulis...',
-                    price: 'Rp 450.000',
-                    location: 'Batik Lestari',
-                    rating: '5.0',
-                    width: double.infinity),
-                ProductCard(
-                    title: 'Madu Hutan Organi...',
-                    price: 'Rp 120.000',
-                    location: 'Madu Alam',
-                    rating: '4.9',
-                    width: double.infinity),
-                ProductCard(
-                    title: 'Tas Anyaman Pand...',
-                    price: 'Rp 210.000',
-                    location: 'Anyaman Kreatif',
-                    rating: '4.7',
-                    width: double.infinity),
-              ],
-            ),
+              )
+            else
+              GridView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: _favoriteItems.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
+                  childAspectRatio: 0.65,
+                ),
+                itemBuilder: (context, index) {
+                  final item = _favoriteItems[index];
+                  final isSelected = _selectedIndices.contains(index);
+
+                  return Stack(
+                    children: [
+                      // Card produk aslinya
+                      ProductCard(
+                        title: item['title'],
+                        price: item['price'],
+                        location: item['location'],
+                        rating: item['rating'],
+                        category: item['category'] ?? 'Favorit',
+                        width: double.infinity,
+                      ),
+                      
+                      // Checkbox overlay diletakkan tanpa mengubah bentuk / border card
+                      Positioned(
+                        top: 8,
+                        left: 8,
+                        child: GestureDetector(
+                          onTap: () => _toggleSelection(index),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.9),
+                              shape: BoxShape.circle,
+                            ),
+                            child: Checkbox(
+                              value: isSelected,
+                              onChanged: (val) => _toggleSelection(index),
+                              activeColor: const Color(0xFFB45309),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      
+                      // Transparan tappable area untuk klik (opsional jika card-nya sendiri bukan button)
+                      Positioned.fill(
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(16),
+                            onTap: () => _toggleSelection(index),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
+              
             const SizedBox(height: 32),
             Text(
               'Rekomendasi Lainnya',
@@ -123,14 +267,18 @@ class FavoriteScreen extends StatelessWidget {
                   ProductCard(
                       title: 'Mainan Kayu Edukasi',
                       price: 'Rp 95.000',
-                      location: 'Kediri',
-                      rating: '4.8'),
+                      location: 'Desa Wisata Kasongan',
+                      rating: '4.8',
+                      category: 'Kerajinan',
+                  ),
                   SizedBox(width: 16),
                   ProductCard(
                       title: 'Paket Jajanan Pasar',
                       price: 'Rp 45.000',
-                      location: 'Solo',
-                      rating: '4.9'),
+                      location: 'Desa Wisata Kasongan',
+                      rating: '4.9',
+                      category: 'Kuliner',
+                  ),
                 ],
               ),
             ),
