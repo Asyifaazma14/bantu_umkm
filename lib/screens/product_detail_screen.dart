@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import '../utils/state_manager.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final String title;
@@ -49,6 +50,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   bool _isFavorite = false;
 
   @override
+  void initState() {
+    super.initState();
+    _isFavorite = FavoriteManager.isFavorite(widget.title);
+  }
+
+  @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
 
@@ -82,10 +89,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                               fit: BoxFit.cover,
                               placeholder: (context, url) => Container(
                                 color: const Color(0xFFE5E7EB),
-                                child: const Center(
+                                child: Center(
                                   child: CircularProgressIndicator(
                                     valueColor: AlwaysStoppedAnimation<Color>(
-                                        Color(0xFF6366F1)),
+                                        Theme.of(context).primaryColor),
                                   ),
                                 ),
                               ),
@@ -110,12 +117,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         right: 0,
                         height: 80,
                         child: Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             gradient: LinearGradient(
                               begin: Alignment.bottomCenter,
                               end: Alignment.topCenter,
                               colors: [
-                                const Color(0xFFF7F8FC),
+                                Color(0xFFF7F8FC),
                                 Colors.transparent,
                               ],
                             ),
@@ -131,9 +138,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           child: SmoothPageIndicator(
                             controller: _pageController,
                             count: widget.images.length,
-                            effect: const WormEffect(
-                              activeDotColor: Color(0xFF6366F1),
-                              dotColor: Color(0xFFD1D5DB),
+                            effect: WormEffect(
+                              activeDotColor: Theme.of(context).primaryColor,
+                              dotColor: const Color(0xFFD1D5DB),
                               dotWidth: 8,
                               dotHeight: 8,
                               spacing: 6,
@@ -302,10 +309,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 width: 50,
                                 height: 50,
                                 decoration: BoxDecoration(
-                                  gradient: const LinearGradient(
+                                  gradient: LinearGradient(
                                     colors: [
-                                      Color(0xFF6366F1),
-                                      Color(0xFFB45309)
+                                      Theme.of(context).primaryColor,
+                                      const Color(0xFFB45309)
                                     ],
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
@@ -361,7 +368,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 12, vertical: 7),
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFF6366F1).withOpacity(0.1),
+                                  color: Theme.of(context).primaryColor.withOpacity(0.1),
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Text(
@@ -501,11 +508,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      const Padding(
-                                        padding: EdgeInsets.only(top: 2),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 2),
                                         child: Icon(
                                           Icons.check_circle_rounded,
-                                          color: Color(0xFF6366F1),
+                                          color: Theme.of(context).primaryColor,
                                           size: 16,
                                         ),
                                       ),
@@ -547,7 +554,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 style: GoogleFonts.plusJakartaSans(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w600,
-                                  color: const Color(0xFF6366F1),
+                                  color: Theme.of(context).primaryColor,
                                 ),
                               ),
                             ],
@@ -580,12 +587,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       placeholder: (context, url) =>
                                           Container(
                                         color: const Color(0xFFE5E7EB),
-                                        child: const Center(
+                                        child: Center(
                                           child: CircularProgressIndicator(
                                             strokeWidth: 2,
                                             valueColor:
                                                 AlwaysStoppedAnimation<Color>(
-                                                    Color(0xFF6366F1)),
+                                                    Theme.of(context).primaryColor),
                                           ),
                                         ),
                                       ),
@@ -668,7 +675,17 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     const SizedBox(width: 10),
                     GestureDetector(
                       onTap: () {
-                        setState(() => _isFavorite = !_isFavorite);
+                        setState(() {
+                          _isFavorite = !_isFavorite;
+                          FavoriteManager.toggleFavorite({
+                            'title': widget.title,
+                            'price': widget.price,
+                            'location': widget.location,
+                            'rating': widget.rating,
+                            'category': widget.category,
+                            'description': widget.description,
+                          });
+                        });
                       },
                       child: Container(
                         width: 44,

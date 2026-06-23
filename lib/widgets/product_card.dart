@@ -111,11 +111,11 @@ class ProductCard extends StatelessWidget {
                             fit: BoxFit.cover,
                             placeholder: (context, url) => Container(
                               color: const Color(0xFFF3F4F6),
-                              child: const Center(
+                              child: Center(
                                 child: CircularProgressIndicator(
                                   strokeWidth: 2,
                                   valueColor: AlwaysStoppedAnimation<Color>(
-                                      Color(0xFF6366F1)),
+                                      Theme.of(context).primaryColor),
                                 ),
                               ),
                             ),
@@ -176,7 +176,7 @@ class ProductCard extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF6366F1).withOpacity(0.1),
+                      color: Theme.of(context).primaryColor.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Text(
@@ -184,7 +184,7 @@ class ProductCard extends StatelessWidget {
                       style: GoogleFonts.plusJakartaSans(
                         fontSize: 10,
                         fontWeight: FontWeight.w600,
-                        color: const Color(0xFF6366F1),
+                        color: Theme.of(context).primaryColor,
                       ),
                     ),
                   ),
@@ -265,7 +265,7 @@ class ProductCard extends StatelessWidget {
                               style: GoogleFonts.plusJakartaSans(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
-                                color: const Color(0xFF6366F1),
+                                color: Theme.of(context).primaryColor,
                               ),
                             ),
                           ],
